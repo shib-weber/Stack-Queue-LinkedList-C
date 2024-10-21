@@ -1,32 +1,32 @@
 #include<stdio.h>
 void stack(){
     int c,size,top=-1,n;
-    printf("Enter the Size of the Stack");
+    printf("Enter the Size of the Stack\t");
     scanf("%d",&size);
     int ar[size];
     do{
-        printf("Enter Your Choice \n1 for push \n2 for pop \n3 for display \n4 for exit");
+        printf("Enter Your Choice \n1 for push \n2 for pop \n3 for display \n4 for exit\n");
         scanf("%d",&c);
         switch(c){
             case 1 :
                 printf("Enter a Number\t");
                 scanf("%d",&n);
                 if(top == size-1){
-                    printf("Stack Overflow");
+                    printf("Stack Overflow\n");
                 }else{
                     ar[++top] = n;
                 }
             break;
             case 2: 
                 if(top == -1){
-                    printf("Stack Underflow");
+                    printf("Stack Underflow\n");
                 }else{
-                    printf("The Popped Element is %d",ar[top--]);
+                    printf("The Popped Element is %d\n",ar[top--]);
                 }
             break;
             case 3: 
                 if(top == -1){
-                    printf("Stack Underflow");
+                    printf("Stack Underflow\n");
                 }else{
                     for(int i =size-1 ;i>=0;i--){
                         if(ar[i]==0){
