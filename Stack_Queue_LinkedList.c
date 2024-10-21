@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main(){
     char ch;
-    printf("Enter Your Choice ");
+    printf("Enter Your Choice : \n's' for Stack\n'q' for Queue \n'l' for Linked List\n");
     scanf("%c",&ch);
     switch (ch)
     {
