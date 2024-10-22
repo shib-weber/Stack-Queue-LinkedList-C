@@ -67,31 +67,20 @@ void queue(){
                         ar[++r]=n;
                     }
                 }
-                
-                
-                if(top == size-1){
-                    printf("Stack Overflow\n");
-                }else{
-                    ar[++top] = n;
-                }
             break;
             case 2: 
-                if(top == -1){
-                    printf("Stack Underflow\n");
+                if(f == -1 || f == size ){
+                    printf("Queue is Empty\n");
                 }else{
-                    printf("The Popped Element is %d\n",ar[top--]);
+                    printf("The Dequeued Element is %d\n",ar[f++]);
                 }
             break;
             case 3: 
-                if(top == -1){
-                    printf("Stack Underflow\n");
-                }else{
-                    for(int i =size-1 ;i>=0;i--){
-                        if(ar[i]==0){
-                            continue;
-                        }else{
-                            printf("%d\n",ar[i]);
-                        }
+                if(f == -1 || f == size){
+                    printf("Queue is Empty \n");
+                 }else{
+                    for(int i = f ;i<= r;i++){   
+                        printf("%d\t",ar[i]);
                     }
                 }
             break;
