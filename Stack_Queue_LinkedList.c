@@ -103,7 +103,9 @@ int main(){
         printf("You have Chosen Stack\n");
         stack();
         break;
-    case 'q': printf("You have Chosen Queue");
+    case 'q': 
+        printf("You have Chosen Queue\n");
+        queue();
         break;
     case 'l': printf("You have Chosen LinkedList");
         break;
