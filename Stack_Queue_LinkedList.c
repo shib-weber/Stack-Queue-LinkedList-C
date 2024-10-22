@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 void stack(){
     int c,size,top=-1,n;
     printf("Enter the Size of the Stack\t");
@@ -92,47 +93,150 @@ void queue(){
     }
     }while(c != 4);
 }
+struct node {
+    int data ;
+    struct node *next;
+};
+struct node * createnode(int n){
+    struct node* newnode = (struct node*)malloc(sizeof(struct node));
+    newnode->data=n;
+    newnode->next=NULL;
+
+    return newnode;
+}
+
+struct node* insertnode(struct node* head,int pos){
+    int n;
+    printf("Enter a Number\t");
+    scanf("%d",&n);
+    struct node* newnode=createnode(n);
+    if (pos == 1)
+    {
+        if(head==NULL){
+            head = newnode;
+        }else{
+            newnode->next=head;
+            head=newnode;
+        }
+        
+    }
+    else if(pos ==-1){
+        if(head==NULL){
+            head=newnode;
+        }else{
+            struct node* p =head;
+            while(p->next!=NULL){
+                p=p->next;
+            }
+            p->next=newnode;
+        }
+    }else{
+            int count =0;
+            struct node* p =head;
+            struct node* q =head;
+            while(p!=NULL){
+                p=p->next;
+                count++;
+            }
+            if(pos>count || pos<=0){
+                printf("Not an Appropiate Position\n");
+            }else{
+                for(int i =0;i<pos-2;i++){
+                    q=q->next;
+                }
+                newnode->next=q->next;
+                q->next=newnode;
+            }
+    }
+    
+    return head;
+}
+struct node* deletenode(struct node* head,int pos){
+    if (pos == 1)
+    {
+        if(head==NULL){
+            printf("No node to Delete\n");
+        }else{
+            struct node* p=head;
+            head=p->next;
+        }
+        
+    }
+    else if(pos ==-1){
+        if(head==NULL){
+            printf("No node to Delete\n");
+        }else{
+            struct node* p =head;
+            while((p->next)->next!=NULL){
+                p=p->next;
+            }
+            p->next=NULL;
+            
+        }
+    }else{
+            int count =0;
+            struct node* p =head;
+            struct node* q =head;
+            while(p!=NULL){
+                p=p->next;
+                count++;
+            }
+            if(pos>count || pos<=0){
+                printf("Not an Appropiate Position\n");
+            }else{
+                for(int i =0;i<pos-2;i++){
+                    q=q->next;
+                }
+                q->next=(q->next)->next;
+            }
+    }
+    
+    return head;
+}
+void display(struct node* head){
+    struct node* p = head;
+    while(p!=NULL){
+        printf("%d->",p->data);
+        p=p->next;
+    }
+    printf("Null\n");
+}
 
 void linkedlist(){
-    
+    int c,pos=0;
+    struct node* head = NULL;
     do{
-        printf("Enter Your Choice \n1 for Insertion at begining \n2 for insertion at end \n3 for insertion at any position \n4 for exit\n");
+        printf("Enter Your Choice \n1 for Insertion at begining \n2 for insertion at end \n3 for insertion at any position \n4 for deletion from begin \n5 for deletion from end \n5 for deletion from any position\n7 for display\n8 for exit\n");
         scanf("%d",&c);
         switch(c){
-            case 1:
-
-
+            case 1:head=insertnode(head,1);
             break;
-            case 2: 
-                if(f == -1 || f == size || f>r){
-                    printf("Queue is Empty\n");
-                    f=-1;r=-1;
-                }else{
-                    printf("The Dequeued Element is %d\n",ar[f++]);
-                }
+            case 2: head=insertnode(head,-1);
             break;
             case 3: 
-                if(f == -1 || f == size){
-                    printf("Queue is Empty \n");
-                 }else{
-                    for(int i = f ;i<= r;i++){   
-                        printf("%d\t",ar[i]);
-                    }
-                    printf("\n");
-                }
+                printf("Enter a Position\t");
+                scanf("%d",&pos);
+                head=insertnode(head,pos);
             break;
-            case 4: break;
+            case 4:head=deletenode(head,1);
+            break;
+            case 5: head=deletenode(head,-1);
+            break;
+            case 6: 
+                printf("Enter a Position\t");
+                scanf("%d",&pos);
+                head=deletenode(head,pos);
+            break;
+            case 7:
+                display(head);
+                break;
+            case 8: break;
             default: printf("No other choice\n");
             break;
     }
-    }while(c != 4);
+    }while(c != 8);
     
 }
-struct node {
-    int n ;
-    node *next;
-};
-struct node
 
 
 int main(){
@@ -149,7 +253,9 @@ int main(){
         printf("You have Chosen Queue\n");
         queue();
         break;
-    case 'l': printf("You have Chosen LinkedList");
+    case 'l':
+        printf("You have Chosen LinkedList\n");
+        linkedlist();
         break;
     default:printf("o Other Choice");
         break;
