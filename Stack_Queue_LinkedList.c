@@ -46,8 +46,8 @@ void stack(){
 }
 
 void queue(){
-    int size;n,f=-1,r=-1;
-    printf("Enter the size of the Queue \n");
+    int size,c,n,f=-1,r=-1;
+    printf("Enter the size of the Queue \t");
     scanf("%d",&size);
         int ar[size];
     do{
@@ -55,7 +55,7 @@ void queue(){
         scanf("%d",&c);
         switch(c){
             case 1 :
-                if(f==size-1){
+                if(r==size-1){
                     printf("Queue is Full");
                 }else{
                     printf("Enter a Number\t");
@@ -69,8 +69,9 @@ void queue(){
                 }
             break;
             case 2: 
-                if(f == -1 || f == size ){
+                if(f == -1 || f == size || f>r){
                     printf("Queue is Empty\n");
+                    f=-1;r=-1;
                 }else{
                     printf("The Dequeued Element is %d\n",ar[f++]);
                 }
@@ -82,10 +83,11 @@ void queue(){
                     for(int i = f ;i<= r;i++){   
                         printf("%d\t",ar[i]);
                     }
+                    printf("\n");
                 }
             break;
             case 4: break;
-            default: printf("No other choice");
+            default: printf("No other choice\n");
             break;
     }
     }while(c != 4);
