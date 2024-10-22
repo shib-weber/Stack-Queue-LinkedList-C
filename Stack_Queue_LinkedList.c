@@ -55,11 +55,20 @@ void queue(){
         scanf("%d",&c);
         switch(c){
             case 1 :
-                if(f==-1&&r==-1){
-                    
+                if(f==size-1){
+                    printf("Queue is Full");
+                }else{
+                    printf("Enter a Number\t");
+                    scanf("%d",&n);
+                    if(f==-1&&r==-1){
+                        f=0;r=0;
+                        ar[r]=n;
+                    }else{
+                        ar[++r]=n;
+                    }
                 }
-                printf("Enter a Number\t");
-                scanf("%d",&n);
+                
+                
                 if(top == size-1){
                     printf("Stack Overflow\n");
                 }else{
