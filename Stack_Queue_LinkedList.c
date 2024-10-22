@@ -93,6 +93,48 @@ void queue(){
     }while(c != 4);
 }
 
+void linkedlist(){
+    
+    do{
+        printf("Enter Your Choice \n1 for Insertion at begining \n2 for insertion at end \n3 for insertion at any position \n4 for exit\n");
+        scanf("%d",&c);
+        switch(c){
+            case 1:
+
+
+            break;
+            case 2: 
+                if(f == -1 || f == size || f>r){
+                    printf("Queue is Empty\n");
+                    f=-1;r=-1;
+                }else{
+                    printf("The Dequeued Element is %d\n",ar[f++]);
+                }
+            break;
+            case 3: 
+                if(f == -1 || f == size){
+                    printf("Queue is Empty \n");
+                 }else{
+                    for(int i = f ;i<= r;i++){   
+                        printf("%d\t",ar[i]);
+                    }
+                    printf("\n");
+                }
+            break;
+            case 4: break;
+            default: printf("No other choice\n");
+            break;
+    }
+    }while(c != 4);
+    
+}
+struct node {
+    int n ;
+    node *next;
+};
+struct node
+
+
 int main(){
     char ch;
     printf("Enter Your Choice : \n's' for Stack\n'q' for Queue \n'l' for Linked List\n");
